@@ -8,6 +8,13 @@
 
     <nav class="hidden md:flex items-center gap-2">
       <button
+        id="hero-button"
+        class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
+      >
+        Inicio
+      </button>
+
+      <button
         id="experience-button"
         class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
       >
@@ -32,16 +39,18 @@
 </header>
 
 <script>
+  const heroButton = document.getElementById("hero-button");
   const experienceButton = document.getElementById("experience-button");
   const projectsButton = document.getElementById("projects-button");
   const aboutButton = document.getElementById("about-button");
-  const buttons = [experienceButton, projectsButton, aboutButton];
-  const sections = ["experience", "projects", "about"];
+  const buttons = [heroButton, experienceButton, projectsButton, aboutButton];
+  const sections = ["hero", "experience", "projects", "about"];
 
   buttons.forEach((button, index) => {
     button?.addEventListener("click", () => {
       document.getElementById(sections[index])?.scrollIntoView({
-        behavior: "smooth",
+        behavior: "smooth", 
+        block: index === 0 ? "center" : "start"
       });
     });
   });
