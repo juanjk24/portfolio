@@ -29,6 +29,13 @@
       </button>
 
       <button
+        id="certificates-button"
+        class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
+      >
+        Cursos y Certificados
+      </button>
+
+      <button
         id="about-button"
         class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
       >
@@ -42,9 +49,10 @@
   const heroButton = document.getElementById("hero-button");
   const experienceButton = document.getElementById("experience-button");
   const projectsButton = document.getElementById("projects-button");
+  const certificatesButton = document.getElementById("certificates-button");
   const aboutButton = document.getElementById("about-button");
-  const buttons = [heroButton, experienceButton, projectsButton, aboutButton];
-  const sections = ["hero", "experience", "projects", "about"];
+  const buttons = [heroButton, experienceButton, projectsButton, certificatesButton, aboutButton];
+  const sections = ["hero", "experience", "projects", "certificates", "about"];
 
   buttons.forEach((button, index) => {
     button?.addEventListener("click", () => {
