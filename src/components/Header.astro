@@ -1,46 +1,35 @@
+---
+const navItems = [
+  { id: "experience-button", text: "Experiencia" },
+  { id: "projects-button", text: "Proyectos" },
+  { id: "certificates-button", text: "Cursos y Certificados" },
+  { id: "about-button", text: "Sobre Mí" },
+];
+---
+
 <header
   class="fixed top-0 left-0 right-0 bg-[#0a0a0c] z-50 border-b border-[#27272a]"
 >
   <div
     class="container mx-auto px-4 md:px-12 lg:px-40 py-4 flex justify-between items-center"
   >
-    <h1 class="text-2xl font-bold text-[#fafafa]">Juan Cuellar</h1>
+    <button id="hero-button" class="cursor-pointer">
+      <h1 class="text-2xl font-bold text-[#fafafa]">Juan Cuellar</h1>
+    </button>
 
     <nav class="hidden md:flex items-center gap-2">
-      <button
-        id="hero-button"
-        class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
-      >
-        Inicio
-      </button>
 
-      <button
-        id="experience-button"
-        class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
-      >
-        Experiencia
-      </button>
-
-      <button
-        id="projects-button"
-        class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
-      >
-        Proyectos
-      </button>
-
-      <button
-        id="certificates-button"
-        class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
-      >
-        Cursos y Certificados
-      </button>
-
-      <button
-        id="about-button"
-        class="text-[#fafafa] font-medium hover:text-[#f9f9f9] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
-      >
-        Sobre Mí
-      </button>
+      {
+        navItems.map(({ id, text }) => (
+          <button
+            id={id}
+            class="text-[#fafafa] font-medium hover:text-[#fff] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
+          >
+            {text}
+          </button>
+        ))
+      }
+      
     </nav>
   </div>
 </header>
