@@ -1,0 +1,33 @@
+---
+import Card from "./ui/Card.astro";
+import Award from "./icons/Award.astro";
+import Platzi from "./icons/Platzi.astro";
+
+const { title, institution, link } = Astro.props;
+---
+
+<Card>
+  <article class="p-6 space-y-4">
+    <header class="flex items-center gap-4">
+      {
+        institution === "Platzi" ? (
+          <Platzi class="h-8 w-8" />
+        ) : (
+          <Award class="h-8 w-8" />
+        )
+      }
+
+      <div>
+        <a href={link} title="Ver Certificado" rel="noopener noreferrer" target="_blank">
+          <h3 class="text-[#fafafa] font-semibold hover:underline">
+            {title}
+          </h3>
+        </a>
+
+        <p class="text-[#96969f]">
+          {institution}
+        </p>
+      </div>
+    </header>
+  </article>
+</Card>
