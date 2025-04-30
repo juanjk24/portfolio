@@ -1,42 +1,52 @@
 ---
-import Card from "./ui/Card.astro";
-import MapPin from "./icons/MapPin.astro";
+import Experience from "./icons/Experience.astro";
 ---
 
 <section id="experience" class="scroll-mt-32">
-  <h2 class="text-3xl font-bold mb-8 text-[#fafafa]">Experiencia</h2>
+  <h2
+    class="flex flex-row items-center gap-x-2 text-3xl font-bold mb-8 text-[#fafafa]"
+  >
+    <Experience class="h-8 w-8" />
+    Experiencia laboral
+  </h2>
 
-  <div class="grid gap-6">
-    <Card>
-      <div class="p-6">
-        <div class="space-y-4">
-          <div>
-            <h3 class="text-xl font-semibold text-[#f4f4f4]">JnixSoft</h3>
-
-            <p class="text-[#96969f] flex items-center gap-2">
-              <MapPin class="h-4 w-4" />
-              Colombia
-            </p>
-            <time class="text-sm text-[#96969f]">
-              Agosto de 2023 - Diciembre de 2024
-            </time>
-          </div>
-
-          <p class="text-[#96969f]">
-            En Jnixsoft, ocupé el puesto de desarrollador Front-end, donde
-            contribuí al diseño e implementación de los módulos visuales de una
-            aplicación web para la gestión de operaciones de transporte. Utilicé
-            HTML, CSS, JavaScript y PHP para desarrollar las interfaces
-            mejorando así la experiencia del usuario.
-          </p>
-
-          <ul class="list-disc list-inside space-y-2 text-[#e0e0e1]">
-            <li>Diseño e implementación de módulos visuales</li>
-            <li>Desarrollo de interfaces de usuario responsivas</li>
-            <li>Mejora de la experiencia del usuario</li>
-          </ul>
-        </div>
+  <ol class="relative border-s border-gray-500">
+    <li class="flex flex-col md:flex-row mb-10 ms-4">
+      <div
+        class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-blue-500 bg-blue-700"
+      >
       </div>
-    </Card>
-  </div>
+
+      <div>
+        <h2
+          class="w-max text-2xl font-semibold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
+        >
+          Desarrollador Front-End
+        </h2>
+
+        <a
+          class="block w-max"
+          href="https://jnixsoft.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 class="text-xl font-semibold text-[#f4f4f4] hover:underline">
+            JnixSoft
+          </h3>
+        </a>
+
+        <time class="mb-1 text-sm leading-none text-gray-300">
+          Agosto de 2023 - Diciembre de 2024
+        </time>
+      </div>
+
+      <p class="text-[#f4f4f4] text-balance mt-4 md:mt-0 md:ml-20">
+        En Jnixsoft, ocupé el puesto de desarrollador Front-End, donde contribuí
+        al diseño e implementación de los módulos visuales de una aplicación web
+        para la gestión de operaciones de transporte. Utilicé HTML, CSS,
+        JavaScript y PHP para desarrollar las interfaces mejorando así la
+        experiencia del usuario.
+      </p>
+    </li>
+  </ol>
 </section>
