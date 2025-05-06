@@ -18,7 +18,6 @@ const navItems = [
     </button>
 
     <nav class="hidden md:flex items-center gap-2">
-
       {
         navItems.map(({ id, text }) => (
           <button
@@ -29,49 +28,55 @@ const navItems = [
           </button>
         ))
       }
-      
     </nav>
   </div>
 </header>
 
 <script>
-  const buttons = {
-    hero: document.getElementById("hero-button"),
-    experience: document.getElementById("experience-button"),
-    projects: document.getElementById("projects-button"),
-    certificates: document.getElementById("certificates-button"),
-    about: document.getElementById("about-button"),
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = {
+      hero: document.getElementById("hero-button"),
+      experience: document.getElementById("experience-button"),
+      projects: document.getElementById("projects-button"),
+      certificates: document.getElementById("certificates-button"),
+      about: document.getElementById("about-button"),
+    };
 
-  const sections = Object.keys(buttons).map(key => document.getElementById(key));
+    const sections = Object.keys(buttons).map((key) =>
+      document.getElementById(key)
+    );
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id as keyof typeof buttons;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id as keyof typeof buttons;
 
-        Object.values(buttons).forEach(button => {
-          button?.classList.remove("bg-[#2e2e2e]");
-          button?.classList.remove("text-[#fff]");
+            Object.values(buttons).forEach((button) => {
+              button?.classList.remove("bg-[#2e2e2e]");
+              button?.classList.remove("text-[#fff]");
+            });
+
+            buttons[id]?.classList.add("bg-[#2e2e2e]", "text-[#fff]");
+          }
         });
-
-        buttons[id]?.classList.add("bg-[#2e2e2e]", "text-[#fff]");
+      },
+      {
+        threshold: 0.4,
       }
-    })
-  }, {
-    threshold: 0.4,
-  })
+    );
 
-  sections.slice(1).forEach(section => {
-    if (section) observer.observe(section);
-  });
+    sections.slice(1).forEach((section) => {
+      if (section) observer.observe(section);
+    });
 
-  // Scroll al hacer clic en los botones
-  Object.entries(buttons).forEach(([sectionId, button]) => {
-    button?.addEventListener("click", () => {
-      document.getElementById(sectionId)?.scrollIntoView({
-        behavior: "smooth",
-        block: sectionId === "hero" ? "center" : "start",
+    // Scroll al hacer clic en los botones
+    Object.entries(buttons).forEach(([sectionId, button]) => {
+      button?.addEventListener("click", () => {
+        document.getElementById(sectionId)?.scrollIntoView({
+          behavior: "smooth",
+          block: sectionId === "hero" ? "center" : "start",
+        });
       });
     });
   });
