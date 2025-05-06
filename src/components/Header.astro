@@ -23,7 +23,7 @@ const navItems = [
         navItems.map(({ id, text }) => (
           <button
             id={id}
-            class="text-[#fafafa] font-medium hover:text-[#fff] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#27272a] transition-all"
+            class="text-[#fafafa] font-medium hover:text-[#fff] py-[4px] px-[8px] rounded-md cursor-pointer hover:bg-[#2e2e2e] transition-all"
           >
             {text}
           </button>
@@ -35,19 +35,43 @@ const navItems = [
 </header>
 
 <script>
-  const heroButton = document.getElementById("hero-button");
-  const experienceButton = document.getElementById("experience-button");
-  const projectsButton = document.getElementById("projects-button");
-  const certificatesButton = document.getElementById("certificates-button");
-  const aboutButton = document.getElementById("about-button");
-  const buttons = [heroButton, experienceButton, projectsButton, certificatesButton, aboutButton];
-  const sections = ["hero", "experience", "projects", "certificates", "about"];
+  const buttons = {
+    hero: document.getElementById("hero-button"),
+    experience: document.getElementById("experience-button"),
+    projects: document.getElementById("projects-button"),
+    certificates: document.getElementById("certificates-button"),
+    about: document.getElementById("about-button"),
+  }
 
-  buttons.forEach((button, index) => {
+  const sections = Object.keys(buttons).map(key => document.getElementById(key));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id as keyof typeof buttons;
+
+        Object.values(buttons).forEach(button => {
+          button?.classList.remove("bg-[#2e2e2e]");
+          button?.classList.remove("text-[#fff]");
+        });
+
+        buttons[id]?.classList.add("bg-[#2e2e2e]", "text-[#fff]");
+      }
+    })
+  }, {
+    threshold: 0.4,
+  })
+
+  sections.slice(1).forEach(section => {
+    if (section) observer.observe(section);
+  });
+
+  // Scroll al hacer clic en los botones
+  Object.entries(buttons).forEach(([sectionId, button]) => {
     button?.addEventListener("click", () => {
-      document.getElementById(sections[index])?.scrollIntoView({
-        behavior: "smooth", 
-        block: index === 0 ? "center" : "start"
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: "smooth",
+        block: sectionId === "hero" ? "center" : "start",
       });
     });
   });
