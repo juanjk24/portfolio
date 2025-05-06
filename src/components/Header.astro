@@ -1,4 +1,6 @@
 ---
+import Menu from "./icons/Menu.astro";
+
 const navItems = [
   { id: "experience-button", text: "Experiencia" },
   { id: "projects-button", text: "Proyectos" },
@@ -7,12 +9,8 @@ const navItems = [
 ];
 ---
 
-<header
-  class="fixed top-0 left-0 right-0 bg-[#111] z-50 border-b border-[#27272a]"
->
-  <div
-    class="container mx-auto px-4 md:px-12 lg:px-40 py-4 flex justify-between items-center"
-  >
+<header class="fixed top-0 left-0 right-0 bg-[#111] z-50 border-b border-[#27272a]">
+  <div class="container mx-auto px-4 md:px-12 lg:px-40 py-4 flex justify-between items-center">
     <button id="hero-button" class="cursor-pointer">
       <h1 class="text-2xl font-bold text-[#fafafa]">Juan Cuellar</h1>
     </button>
@@ -29,11 +27,38 @@ const navItems = [
         ))
       }
     </nav>
+
+    <button 
+      id="menu-toggle"
+      title="Abrir menú"
+      class="md:hidden text-white focus:outline-none transition-transform duration-300"
+    >
+      <Menu />
+    </button>
+
+    <div
+      id="mobile-menu"
+      class="md:hidden absolute top-full left-0 right-0 bg-[#111] border-t border-[#27272a] flex flex-col items-start px-4 py-4 gap-2 transition-all duration-300 ease-in-out transform opacity-0 scale-y-0 origin-top pointer-events-none"
+    >
+      {
+        navItems.map(({ id, text }) => (
+          <button
+            id={`${id}-mobile`}
+            class="text-[#fafafa] text-left w-full font-medium hover:text-[#fff] py-[8px] px-[12px] rounded-md cursor-pointer hover:bg-[#2e2e2e] transition-all"
+          >
+            {text}
+          </button>
+        ))
+      }
+    </div>
   </div>
 </header>
 
 <script type="module">
   document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuToggle = document.getElementById("menu-toggle");
+
     const buttons = {
       hero: document.getElementById("hero-button"),
       experience: document.getElementById("experience-button"),
@@ -42,42 +67,60 @@ const navItems = [
       about: document.getElementById("about-button"),
     };
 
-    const sections = Object.keys(buttons).map((key) =>
-      document.getElementById(key)
-    );
+    const openMobileMenu = () => {
+      mobileMenu.classList.remove("scale-y-0", "opacity-0", "pointer-events-none");
+      mobileMenu.classList.add("scale-y-100", "opacity-100", "pointer-events-auto");
+    };
 
+    const closeMobileMenu = () => {
+      mobileMenu.classList.remove("scale-y-100", "opacity-100", "pointer-events-auto");
+      mobileMenu.classList.add("scale-y-0", "opacity-0", "pointer-events-none");
+    };
+
+    const toggleMobileMenu = () => {
+      const isOpen = mobileMenu.classList.contains("scale-y-100");
+      isOpen ? closeMobileMenu() : openMobileMenu();
+    };
+
+    menuToggle.addEventListener("click", toggleMobileMenu);
+
+    // Botones del menú móvil
+    document.querySelectorAll("[id$='-button-mobile']").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const sectionId = btn.id.replace("-button-mobile", "");
+
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        closeMobileMenu();
+      });
+    });
+
+    // Scroll suave para botones desktop
+    Object.entries(buttons).forEach(([key, btn]) => {
+      btn?.addEventListener("click", () => {
+        document.getElementById(key)?.scrollIntoView({
+          behavior: "smooth",
+          block: key === "hero" ? "center" : "start",
+        });
+      });
+    });
+
+    // Resaltar botón activo con IntersectionObserver
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.id;
-
-            Object.values(buttons).forEach((button) => {
-              button?.classList.remove("bg-[#2e2e2e]");
-              button?.classList.remove("text-[#fff]");
+            Object.values(buttons).forEach((btn) => {
+              btn?.classList.remove("bg-[#2e2e2e]", "text-[#fff]");
             });
-
             buttons[id]?.classList.add("bg-[#2e2e2e]", "text-[#fff]");
           }
         });
       },
-      {
-        threshold: 0.4,
-      }
+      { threshold: 0.4 }
     );
 
-    sections.slice(1).forEach((section) => {
-      if (section) observer.observe(section);
-    });
-
-    // Scroll al hacer clic en los botones
-    Object.entries(buttons).forEach(([sectionId, button]) => {
-      button?.addEventListener("click", () => {
-        document.getElementById(sectionId)?.scrollIntoView({
-          behavior: "smooth",
-          block: sectionId === "hero" ? "center" : "start",
-        });
-      });
-    });
+    const sections = Object.keys(buttons).map((key) => document.getElementById(key));
+    sections.slice(1).forEach((section) => section && observer.observe(section));
   });
 </script>
