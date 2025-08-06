@@ -1,173 +1,56 @@
 ---
 import Card from "./ui/Card.astro";
 import Button from "./ui/Button.astro";
-import ExternalLink from "./icons/ExternalLink.astro";
 import Code from "./icons/Code.astro";
+import ExternalLink from "./icons/ExternalLink.astro";
+import { projects } from "../data/projects.js";
+
 ---
 
 <section id="projects" class="scroll-mt-32">
   <h2 class="flex flex-row gap-x-2 items-center text-3xl font-bold mb-8 text-[#fafafa]">
-    <Code class="h-8 w-8"/>
+    <Code class="h-8 w-8" />
     Proyectos
   </h2>
 
   <div class="grid md:grid-cols-2 gap-6">
-    <Card>
-      <div class="p-6 space-y-4">
-        <div class="aspect-video relative overflow-hidden rounded-lg">
-          <img
-            src="/demo-jnixsoft.webp"
-            class="aspect-video object-cover"
-            alt="Software de Gestión de Transporte Screenshot"
-            width="960"
-            height="640"
-          />
-        </div>
+    {projects.map((project) => (
+      <Card>
+        <div class="p-6 space-y-4">
+          <div class="aspect-video relative overflow-hidden rounded-lg">
+            <img
+              src={project.image.src}
+              alt={project.image.alt}
+              width={project.image.width}
+              height={project.image.height}
+              class="aspect-video object-cover"
+              loading="lazy"
+            />
+          </div>
 
-        <div>
-          <h3 class="text-xl font-semibold mb-2 text-[#fafafa] text-pretty">
-            Software para la gestión de Operaciones de Transporte
-          </h3>
-          <p class="text-[#96969f] mb-4">
-            Software que permite llevar el control de preoperacionales,
-            conductores, vehículos, programación de rutas entre otros. Realizado
-            por JnixSoft para clientes de la región del Putumayo en Colombia.
-          </p>
+          <div>
+            <h3 class="text-xl font-semibold mb-2 text-[#fafafa] text-pretty">
+              {project.title}
+            </h3>
+            <p class="text-[#96969f] mb-4">{project.description}</p>
 
-          <div class="flex gap-4">
-            <Button
-              href="https://demo.jnixsoft.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink class="h-4 w-4" />
-              Ver Demo
-            </Button>
+            <div class="flex gap-4">
+              {project.links.map((link) => (
+                <Button
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {
+                    link.icon === "external" ? <ExternalLink class="h-4 w-4" /> : <Code class="h-4 w-4" />
+                  }
+                  {link.label}
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </Card>
-
-    <Card>
-      <div class="p-6 space-y-4">
-        <div class="aspect-video relative overflow-hidden rounded-lg">
-          <img
-            src="/shot-words-count.webp"
-            class="aspect-video object-cover"
-            alt="Screenshot de Words Count, software para contar palabras"
-            width="960"
-            height="720"
-          />
-        </div>
-
-        <div>
-          <h3 class="text-xl font-semibold mb-2 text-[#fafafa]">Words Count</h3>
-          <p class="text-[#96969f] mb-4">
-            Contador de palabras, letras, espacios, mayúsculas, minúsculas,
-            números y caracteres.
-          </p>
-
-          <div class="flex gap-4">
-            <Button
-              href="https://words-count-omega.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink class="h-4 w-4" />
-              Ver Demo
-            </Button>
-
-            <Button
-              href="https://github.com/juanjk24/words-count"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Code class="h-4 w-4" />
-              Código
-            </Button>
-          </div>
-        </div>
-      </div>
-    </Card>
-
-    <Card>
-      <div class="p-6 space-y-4">
-        <div class="aspect-video relative overflow-hidden rounded-lg">
-          <img
-            src="/shot-removebg.webp"
-            class="aspect-video object-cover"
-            alt="Screenshot de software para eliminar fondo de imagenes"
-            loading="lazy"
-            width="960"
-            height="720"
-          />
-        </div>
-
-        <div>
-          <h3 class="text-xl font-semibold mb-2 text-[#fafafa]">
-            Remove Background
-          </h3>
-          <p class="text-[#96969f] mb-4">
-            Aplicación para eliminar fondo de imágenes.
-          </p>
-
-          <div class="flex gap-4">
-            <Button
-              href="https://remover-fondo.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink class="h-4 w-4" />
-              Ver Demo
-            </Button>
-
-            <Button
-              href="https://github.com/juanjk24/remove-bg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Code class="h-4 w-4" />
-              Código
-            </Button>
-          </div>
-        </div>
-      </div>
-    </Card>
-
-    <Card>
-      <div class="p-6 space-y-4">
-        <div class="aspect-video relative overflow-hidden rounded-lg">
-          <img
-            src="/landing-jnixsoft.webp"
-            class="aspect-video object-cover"
-            alt="Landing Page JnixSoft Screenshot"
-            loading="lazy"
-            width="960"
-            height="640"
-          />
-        </div>
-
-        <div>
-          <h3 class="text-xl font-semibold mb-2 text-[#fafafa]">
-            Landing Page JnixSoft
-          </h3>
-          <p class="text-[#96969f] mb-4 text-pretty">
-            Nueva Landing page de la empresa JnixSoft, empresa de desarrollo de
-            software en la región del Putumayo en Colombia.
-          </p>
-
-          <div class="flex gap-4">
-            <Button
-              href="https://jnixsoft.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink class="h-4 w-4" />
-              Ver Demo
-            </Button>
-          </div>
-        </div>
-      </div>
-    </Card>
+      </Card>
+    ))}
   </div>
 </section>
