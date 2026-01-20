@@ -36,7 +36,7 @@ export const projects = [
         ],
     },
     {
-        title: "Impostor Game (+2000 visitas)",
+        title: "Impostor Game (+2,600 visitas)",
         description: "Impostor Game es un juego de deducción social para jugar con amigos. Descubre quién es el impostor usando pistas, lógica y engaño.",
         image: {
             src: "/shot-impostor-game.webp",
