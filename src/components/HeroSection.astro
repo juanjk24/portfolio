@@ -4,6 +4,7 @@ import Github from "./icons/Github.astro";
 import Linkedin from "./icons/Linkedin.astro";
 import Mail from "./icons/Mail.astro";
 import Phone from "./icons/Phone.astro";
+import CV from "./icons/CV.astro";
 ---
 
 <section
@@ -28,6 +29,7 @@ import Phone from "./icons/Phone.astro";
         target="_blank"
         rel="noopener noreferrer"
         animation="animate-fade-up animate-once animate-duration-1000 animate-delay-400"
+        title="Visitar perfil de GitHub"
       >
         <Github class="h-5 w-5" />
         <span class="sr-only">GitHub</span>
@@ -38,12 +40,17 @@ import Phone from "./icons/Phone.astro";
         target="_blank"
         rel="noopener noreferrer"
         animation="animate-fade-up animate-once animate-duration-1000 animate-delay-500"
+        title="Visitar perfil de LinkedIn"
       >
         <Linkedin class="h-5 w-5" />
         <span class="sr-only">LinkedIn</span>
       </A>
 
-      <A href="mailto:juanjkuellar24@gmail.com" animation="animate-fade-up animate-once animate-duration-1000 animate-delay-600">
+      <A
+        href="mailto:juanjkuellar24@gmail.com"
+        animation="animate-fade-up animate-once animate-duration-1000 animate-delay-600"
+        title="Enviar un correo a Juan Cuellar"
+      >
         <Mail class="h-5 w-5" />
         <span class="sr-only">Email</span>
       </A>
@@ -53,9 +60,21 @@ import Phone from "./icons/Phone.astro";
         target="_blank"
         rel="noopener noreferrer"
         animation="animate-fade-up animate-once animate-duration-1000 animate-delay-700"
+        title="Enviar un mensaje por WhatsApp a Juan Cuellar"
       >
         <Phone class="h-5 w-5" />
         <span class="sr-only">WhatsApp</span>
+      </A>
+
+      <A
+        href="/cv_juan_cuellar.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        animation="animate-fade-up animate-once animate-duration-1000 animate-delay-700"
+        title="Descargar CV de Juan Cuellar"
+      >
+        <CV class="h-5 w-5" />
+        <span class="sr-only">CV</span>
       </A>
     </div>
   </main>
