@@ -23,7 +23,7 @@ import { projects } from "../data/projects.js";
               alt={project.image.alt}
               width={project.image.width}
               height={project.image.height}
-              class="aspect-video object-cover"
+              class={`aspect-video object-cover ${project.image.class}`}
               loading="lazy"
             />
           </div>

@@ -1,5 +1,23 @@
 export const projects = [
     {
+        title: "YachayCodex",
+        description: `Editor de código HTML, CSS y JavaScript en línea. Crea y edita tu código en tiempo real, únete a una sala para programar en equipo, resuelve retos y ejercicios de JavaScript, utiliza un chat de IA para generar código y comparte tus proyectos a través de un solo enlace.`,
+        image: {
+            src: "/yachaycodex.webp",
+            alt: "Screenshot de Yachay Codex, editor de código en línea.",
+            width: 1480,
+            height: 952,
+            class: "object-top"
+        },
+        links: [
+            {
+                href: "https://yachaycodex.dev",
+                label: "Ver Sitio",
+                icon: "external",
+            },
+        ],
+    },
+    {
         title: "Software para la gestión de Operaciones de Transporte",
         description: `Software que permite llevar el control de preoperacionales,
         conductores, vehículos, programación de rutas entre otros. Realizado
@@ -14,23 +32,6 @@ export const projects = [
             {
                 href: "https://demo.jnixsoft.com/",
                 label: "Ver Demo",
-                icon: "external",
-            },
-        ],
-    },
-    {
-        title: "YachayCodex",
-        description: `Editor de código HTML, CSS y JavaScript en línea. Crea y edita tu código en tiempo real, únete a una sala para programar en equipo, resuelve retos y ejercicios de JavaScript, utiliza un chat de IA para generar código y comparte tus proyectos a través de un solo enlace.`,
-        image: {
-            src: "/shot-yachaycodex.webp",
-            alt: "Screenshot de Yachay Codex, editor de código en línea.",
-            width: 1920,
-            height: 1080,
-        },
-        links: [
-            {
-                href: "https://yachaycodex.shayddev.com",
-                label: "Ver Sitio",
                 icon: "external",
             },
         ],
