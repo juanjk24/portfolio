@@ -1,6 +1,7 @@
 ---
 import Card from "./ui/Card.astro";
 import Award from "./icons/Award.astro";
+import Cap from "./icons/Cap.astro";
 import Platzi from "./icons/Platzi.astro";
 
 const { title, institution, link } = Astro.props;
@@ -12,6 +13,8 @@ const { title, institution, link } = Astro.props;
       {
         institution === "Platzi" ? (
           <Platzi class="h-8 w-8" />
+        ) : institution === "Institución Universitaria del Putumayo" ? (
+          <Cap class="h-8 w-8" />
         ) : (
           <Award class="h-8 w-8" />
         )
