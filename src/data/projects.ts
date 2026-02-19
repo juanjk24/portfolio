@@ -1,4 +1,21 @@
-export const projects = [
+export interface Project {
+  title: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    class?: string;
+  };
+  links: {
+    href: string;
+    label: string;
+    icon: string;
+  }[];
+}
+
+export const projects: Project[] = [
     {
         title: "YachayCodex",
         description: `Editor de código HTML, CSS y JavaScript en línea. Crea y edita tu código en tiempo real, únete a una sala para programar en equipo, resuelve retos y ejercicios de JavaScript, utiliza un chat de IA para generar código y comparte tus proyectos a través de un solo enlace.`,
