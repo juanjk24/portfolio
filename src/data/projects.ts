@@ -35,6 +35,23 @@ export const projects: Project[] = [
         ],
     },
     {
+        title: "Impostor Game (+3,900 visitas al mes)",
+        description: "Impostor Game es un juego de deducción social para jugar con amigos. Descubre quién es el impostor usando pistas, lógica y engaño.",
+        image: {
+            src: "/shot-impostor-game.webp",
+            alt: "Screenshot de Impostor Game",
+            width: 1920,
+            height: 1280,
+        },
+        links: [
+            {
+                href: "https://impostores.online",
+                label: "Ver Sitio",
+                icon: "external",
+            },
+        ],
+    },
+    {
         title: "Software para la gestión de Operaciones de Transporte",
         description: `Software que permite llevar el control de preoperacionales,
         conductores, vehículos, programación de rutas entre otros. Realizado
@@ -49,23 +66,6 @@ export const projects: Project[] = [
             {
                 href: "https://demo.jnixsoft.com/",
                 label: "Ver Demo",
-                icon: "external",
-            },
-        ],
-    },
-    {
-        title: "Impostor Game (+3,900 visitas al mes)",
-        description: "Impostor Game es un juego de deducción social para jugar con amigos. Descubre quién es el impostor usando pistas, lógica y engaño.",
-        image: {
-            src: "/shot-impostor-game.webp",
-            alt: "Screenshot de Impostor Game",
-            width: 1920,
-            height: 1280,
-        },
-        links: [
-            {
-                href: "https://impostores.online",
-                label: "Ver Sitio",
                 icon: "external",
             },
         ],
