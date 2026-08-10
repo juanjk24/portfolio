@@ -13,12 +13,6 @@ export const certificates: Certificate[] = [
     icon: "platzi"
   },
   {
-    title: "Mención de Honor, Tecnología en Desarrollo de Software",
-    institution: "Institución Universitaria del Putumayo (UniPutumayo)",
-    link: "/certificates/mencion-honor.pdf",
-    icon: "uniputumayo"
-  },
-  {
     title: "Programación Web Full Stack",
     institution: "Universidad de Antioquia (UDEA)",
     link: "/certificates/diploma-programacion-web-udea.pdf",
